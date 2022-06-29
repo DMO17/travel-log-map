@@ -6,7 +6,7 @@ const pinSchema = {
     ref: "User",
   },
   title: {
-    Type: String,
+    type: String,
     required: true,
   },
   description: {
