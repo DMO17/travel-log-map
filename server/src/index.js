@@ -1,7 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 
-const PORT = 3002;
+const PORT = process.env.PORT;
 
 const app = express();
 
@@ -13,7 +14,7 @@ const init = async () => {
     console.log(`Server Running on http://localhost:${PORT}`)
   );
 
-  await mongoose.connect("mongodb://localhost:27017/travel-log-map", {
+  await mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
