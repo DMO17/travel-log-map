@@ -1,7 +1,45 @@
 const { Pin } = require("../../models");
 
-const getAllPins = (req, res) => {};
+const getAllPins = async (req, res) => {
+  try {
+    const pins = await Pin.find({});
+    res.json({ success: true, data: pins });
+  } catch (error) {
+    console.log(`[Error]: Failed to get pin data | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to get pin data" });
+  }
+};
 
-const createPin = (req, res) => {};
+const createPin = async (req, res) => {
+  try {
+    const { username, title, description, rating, lat, long } = req.body;
+
+    if (!username && !title && !description && !rating && !lat && !long) {
+      console.log(
+        `[ERROR]:  Failed to create a new pin | The correct fields are required`
+      );
+
+      return res.status(400).json({
+        success: false,
+        error: "Failed to create new pin",
+      });
+    }
+
+    const newPin = await Pin.create({
+      username,
+      title,
+      description,
+      rating,
+      lat,
+      long,
+    });
+
+    return res.json({ success: true, data: newPin });
+  } catch (error) {
+    console.log(`[Error]: Failed to create a new pin | ${error.message}`);
+  }
+};
 
 module.exports = { getAllPins, createPin };

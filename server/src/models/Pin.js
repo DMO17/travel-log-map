@@ -2,8 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const pinSchema = {
   username: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
+    required: true,
   },
   title: {
     type: String,
@@ -36,3 +36,8 @@ const schema = new Schema(pinSchema, { timestamps: true });
 const Pin = model("Pin", schema);
 
 module.exports = Pin;
+
+// username: {
+//   type: Schema.Types.ObjectId,
+//   ref: "User",
+// },
