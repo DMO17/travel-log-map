@@ -6,20 +6,22 @@ export const ReviewCard = () => {
   return (
     <div className="card">
       <label>Place</label>
-      <h4>Big ben </h4>
+      <h3>Big ben </h3>
       <label>Review</label>
-      <p>Beautiful place. I enjoyed the view</p>
+      <p className="desc">Beautiful place. I enjoyed the view</p>
       <label>Rating</label>
       <div className="stars">
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
+        <AiFillStar className="star" />
+        <AiFillStar className="star" />
+        <AiFillStar className="star" />
       </div>
       <label>Information</label>
-      <span className="username">
-        Created by <b>DMO15</b>
-      </span>
-      <span className="date">1 hour ago</span>
+      <div className="info-container">
+        <span className="username">
+          Created by <b>DMO15</b>
+        </span>
+        <span className="date">1 hour ago</span>
+      </div>
     </div>
   );
 };
