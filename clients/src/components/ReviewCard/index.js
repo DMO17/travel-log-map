@@ -1,26 +1,30 @@
 import { AiFillStar } from "react-icons/ai";
-
 import "./style.css";
 
-export const ReviewCard = () => {
+export const ReviewCard = ({
+  title,
+  description,
+  rating,
+  username,
+  createdAt,
+}) => {
   return (
     <div className="card">
       <label>Place</label>
-      <h3>Big ben </h3>
+      <h3>{title} </h3>
       <label>Review</label>
-      <p className="desc">Beautiful place. I enjoyed the view</p>
+      <p className="desc">{description}</p>
       <label>Rating</label>
       <div className="stars">
-        <AiFillStar className="star" />
-        <AiFillStar className="star" />
+        {rating}
         <AiFillStar className="star" />
       </div>
       <label>Information</label>
       <div className="info-container">
         <span className="username">
-          Created by <b>DMO15</b>
+          Created by <b>{username}</b>
         </span>
-        <span className="date">1 hour ago</span>
+        <span className="date">{createdAt}</span>
       </div>
     </div>
   );
