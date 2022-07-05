@@ -14,7 +14,7 @@ export const PopUpMarker = ({
       {pins?.map((pin) => (
         <div key={pin?._id}>
           <Markers handleMarkerOnClick={handleMarkerOnClick} pin={pin} />
-          {polarity && <PopUp pin={pin} />}
+          {pin?._id === currentPlace && <PopUp pin={pin} />}
         </div>
       ))}
     </Fragment>

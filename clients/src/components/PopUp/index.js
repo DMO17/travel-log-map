@@ -6,10 +6,11 @@ export const PopUp = ({ pin }) => {
   return (
     <Fragment>
       <Popup
-        key={pin?._id}
         longitude={pin?.long}
         latitude={pin?.lat}
         anchor="left"
+        closeOnClick={false}
+        closeButton={true}
       >
         <ReviewCard {...pin} />
       </Popup>
