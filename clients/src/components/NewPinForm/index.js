@@ -1,19 +1,18 @@
 import { Fragment } from "react";
 import { Popup } from "react-map-gl";
-import { ReviewCard } from "../ReviewCard";
 
-export const PopUp = ({ pin, setCurrentPlace }) => {
+export const NewPinForm = ({ newPlace, setNewPlace }) => {
   return (
     <Fragment>
       <Popup
-        longitude={pin?.long}
-        latitude={pin?.lat}
+        longitude={newPlace?.long}
+        latitude={newPlace?.lat}
         anchor="left"
         closeOnClick={false}
         closeButton={true}
-        onClose={() => setCurrentPlace(null)}
+        onClose={() => setNewPlace(null)}
       >
-        <ReviewCard {...pin} />
+        <div>NEW PIN</div>
       </Popup>
     </Fragment>
   );

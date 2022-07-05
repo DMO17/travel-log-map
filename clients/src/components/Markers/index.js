@@ -5,11 +5,12 @@ export const Markers = ({ pin, handleMarkerOnClick }) => {
   return (
     <Fragment>
       <Marker
+        style={{ cursor: "pointer" }}
         longitude={pin?.long}
         latitude={pin?.lat}
         color="blue"
         onClick={() => {
-          handleMarkerOnClick(pin?._id);
+          handleMarkerOnClick(pin);
         }}
       />
     </Fragment>
