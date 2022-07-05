@@ -2,20 +2,17 @@ import { Fragment } from "react";
 import { Popup } from "react-map-gl";
 import { ReviewCard } from "../ReviewCard";
 
-export const PopUp = ({ pins }) => {
+export const PopUp = ({ pin }) => {
   return (
     <Fragment>
-      {pins?.data?.map((pin) => (
-        <Popup
-          key={pin?._id}
-          longitude={pin?.long}
-          latitude={pin?.lat}
-          anchor="left"
-          // onClose={() => setShowPopup(false)}
-        >
-          <ReviewCard {...pin} />
-        </Popup>
-      ))}
+      <Popup
+        key={pin?._id}
+        longitude={pin?.long}
+        latitude={pin?.lat}
+        anchor="left"
+      >
+        <ReviewCard {...pin} />
+      </Popup>
     </Fragment>
   );
 };
