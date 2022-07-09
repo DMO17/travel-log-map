@@ -19,11 +19,13 @@ function App() {
   const [currentPlace, setCurrentPlace] = useState();
   const [newPlace, setNewPlace] = useState(null);
   const [viewPort, setViewPort] = useState(viewPortObj);
+  const [refetch, setRefetch] = useState(false);
 
   useEffect(() => {
     const pinData = async () => {
       try {
         const { data } = await axios.get("/pin");
+
         setPins(data.data);
       } catch (error) {
         console.log(error.message);
@@ -31,7 +33,7 @@ function App() {
     };
 
     pinData();
-  }, []);
+  }, [refetch]);
 
   const handleMarkerOnClick = (pin) => {
     setCurrentPlace(pin._id);
@@ -50,11 +52,11 @@ function App() {
   return (
     <>
       <Map
-        {...viewPort}
         style={{ width: "90vw", height: "90vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxAccessToken={process.env.REACT_APP_MAPBOX}
         onDblClick={handleAddNewPin}
+        initialViewState={viewPort}
       >
         <PopUpMarker
           pins={pins}
@@ -63,7 +65,12 @@ function App() {
           currentPlace={currentPlace}
         />
         {newPlace && (
-          <NewPinForm newPlace={newPlace} setNewPlace={setNewPlace} />
+          <NewPinForm
+            newPlace={newPlace}
+            setNewPlace={setNewPlace}
+            setPins={setPins}
+            setRefetch={setRefetch}
+          />
         )}
       </Map>
     </>

@@ -1,5 +1,6 @@
 const { User } = require("../../models");
 const bcrypt = require("bcrypt");
+const { signToken } = require("../../util/auth");
 
 const signUp = async (req, res) => {
   try {
@@ -58,7 +59,7 @@ const login = async (req, res) => {
         .json({ success: false, error: "Failed to login " });
     }
 
-    return res.json({ success: true });
+    return res.json({ success: true, token: signToken(user) });
   } catch (error) {
     console.log(`[Error]: Failed to login | ${error.message}`);
     return res.status(500).json({ success: false, error: "Failed to login" });

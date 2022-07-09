@@ -14,9 +14,9 @@ const getAllPins = async (req, res) => {
 
 const createPin = async (req, res) => {
   try {
-    const { username, title, description, rating, lat, long } = req.body;
+    const { title, description, rating, lat, long } = req.body;
 
-    if (!username && !title && !description && !rating && !lat && !long) {
+    if (!title && !description && !rating && !lat && !long) {
       console.log(
         `[ERROR]:  Failed to create a new pin | The correct fields are required`
       );
@@ -28,7 +28,7 @@ const createPin = async (req, res) => {
     }
 
     const newPin = await Pin.create({
-      username,
+      username: req.user.username,
       title,
       description,
       rating,

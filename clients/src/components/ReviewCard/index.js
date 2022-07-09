@@ -1,7 +1,9 @@
 import { AiFillStar } from "react-icons/ai";
 import "./style.css";
+import { v4 as uuidv4 } from "uuid";
 
 export const ReviewCard = ({
+  _id,
   title,
   description,
   rating,
@@ -16,8 +18,7 @@ export const ReviewCard = ({
       <p className="desc">{description}</p>
       <label>Rating</label>
       <div className="stars">
-        {rating}
-        <AiFillStar className="star" />
+        {Array(rating).fill(<AiFillStar className="star" key={uuidv4()} />)}
       </div>
       <label>Information</label>
       <div className="info-container">
