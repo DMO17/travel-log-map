@@ -39,9 +39,9 @@ const login = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    const user = await User.findOne({ username });
+    const loginUser = await User.findOne({ username });
 
-    if (!user) {
+    if (!loginUser) {
       console.log(`[ERROR]:  Failed to login | Incorrect username `);
 
       return res
@@ -49,7 +49,7 @@ const login = async (req, res) => {
         .json({ success: false, error: "Failed to login " });
     }
 
-    const validPassword = await bcrypt.compare(password, user.password);
+    const validPassword = await bcrypt.compare(password, loginUser.password);
 
     if (!validPassword) {
       console.log(`[ERROR]:  Failed to login | Incorrect password `);
@@ -59,7 +59,15 @@ const login = async (req, res) => {
         .json({ success: false, error: "Failed to login " });
     }
 
-    return res.json({ success: true, token: signToken(user) });
+    return res.json({
+      success: true,
+      token: signToken(loginUser),
+      user: {
+        id: loginUser._id,
+        username: loginUser.username,
+        email: loginUser.email,
+      },
+    });
   } catch (error) {
     console.log(`[Error]: Failed to login | ${error.message}`);
     return res.status(500).json({ success: false, error: "Failed to login" });

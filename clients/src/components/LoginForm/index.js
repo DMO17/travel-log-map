@@ -4,23 +4,31 @@ import axios from "axios";
 
 import "./style.css";
 import { useAuth } from "../../context/AppProvider";
+import { useState } from "react";
 
-export const LoginForm = () => {
+export const LoginForm = ({ setLoginForm }) => {
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
 
-  const { setIsLoggedIn } = useAuth();
+  const { setIsLoggedIn, setUser } = useAuth();
+
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (values) => {
-    console.log(values);
-
+    setLoading(true);
     const { data } = await axios.post("/user/login", values);
 
-    // localStorage.setItem("token", token);
-    // localStorage.setItem("user", JSON.stringify());
+    if (data.success) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      setUser(data.user);
+      setIsLoggedIn(true);
+      setLoading(false);
+    }
   };
 
   return (
@@ -47,9 +55,16 @@ export const LoginForm = () => {
           </span>
         )}
         <button className="loginBtn" type="submit">
-          Login
+          {!loading ? "Login" : "...Loading"}
         </button>
       </form>
+      <span
+        style={{ cursor: "pointer" }}
+        className="failure"
+        onClick={() => setLoginForm(false)}
+      >
+        <u>Cancel</u>
+      </span>
     </div>
   );
 };

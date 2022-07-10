@@ -23,6 +23,7 @@ function App() {
   const [newPlace, setNewPlace] = useState(null);
   const [viewPort, setViewPort] = useState(viewPortObj);
   const [refetch, setRefetch] = useState(false);
+  const [showLoginForm, setLoginForm] = useState(false);
 
   useEffect(() => {
     const pinData = async () => {
@@ -54,7 +55,7 @@ function App() {
 
   return (
     <AppProvider>
-      <Header />
+      <Header setLoginForm={setLoginForm} />
       <Map
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
@@ -77,7 +78,7 @@ function App() {
           />
         )}
       </Map>
-      <LoginForm />
+      {showLoginForm && <LoginForm setLoginForm={setLoginForm} />}
     </AppProvider>
   );
 }
