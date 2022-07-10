@@ -7,6 +7,9 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 import { PopUpMarker } from "./components/PopUpMarker";
 import { NewPinForm } from "./components/NewPinForm";
+import { Header } from "./components/Header";
+import { LoginForm } from "./components/LoginForm";
+import { AppProvider } from "./context/AppProvider";
 
 function App() {
   const viewPortObj = {
@@ -50,9 +53,10 @@ function App() {
   };
 
   return (
-    <>
+    <AppProvider>
+      <Header />
       <Map
-        style={{ width: "90vw", height: "90vh" }}
+        style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxAccessToken={process.env.REACT_APP_MAPBOX}
         onDblClick={handleAddNewPin}
@@ -73,7 +77,8 @@ function App() {
           />
         )}
       </Map>
-    </>
+      <LoginForm />
+    </AppProvider>
   );
 }
 
