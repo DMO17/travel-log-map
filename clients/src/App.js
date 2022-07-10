@@ -10,6 +10,7 @@ import { NewPinForm } from "./components/NewPinForm";
 import { Header } from "./components/Header";
 import { LoginForm } from "./components/LoginForm";
 import { AppProvider } from "./context/AppProvider";
+import { SignUpForm } from "./components/SignUpForm";
 
 function App() {
   const viewPortObj = {
@@ -23,7 +24,8 @@ function App() {
   const [newPlace, setNewPlace] = useState(null);
   const [viewPort, setViewPort] = useState(viewPortObj);
   const [refetch, setRefetch] = useState(false);
-  const [showLoginForm, setLoginForm] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showSignupForm, setShowSignupForm] = useState(false);
 
   useEffect(() => {
     const pinData = async () => {
@@ -55,7 +57,10 @@ function App() {
 
   return (
     <AppProvider>
-      <Header setLoginForm={setLoginForm} />
+      <Header
+        setShowLoginForm={setShowLoginForm}
+        setShowSignupForm={setShowSignupForm}
+      />
       <Map
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
@@ -78,7 +83,9 @@ function App() {
           />
         )}
       </Map>
-      {showLoginForm && <LoginForm setLoginForm={setLoginForm} />}
+      {showLoginForm && <LoginForm setShowLoginForm={setShowLoginForm} />}
+
+      {showSignupForm && <SignUpForm setShowSignupForm={setShowSignupForm} />}
     </AppProvider>
   );
 }

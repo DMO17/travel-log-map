@@ -4,7 +4,7 @@ import { BsFillKeyFill } from "react-icons/bs";
 
 import classes from "./style.module.css";
 
-export const Header = ({ setLoginForm }) => {
+export const Header = ({ setShowLoginForm, setShowSignupForm }) => {
   const styling = { fontSize: 50, marginRight: "25px", cursor: "pointer" };
 
   return (
@@ -12,8 +12,11 @@ export const Header = ({ setLoginForm }) => {
       <header className={classes.header}>
         <h1>Travel Log Map</h1>
         <div>
-          <BiLogIn style={styling} onClick={() => setLoginForm(true)} />
-          <BsFillKeyFill style={styling} />
+          <BiLogIn style={styling} onClick={() => setShowLoginForm(true)} />
+          <BsFillKeyFill
+            style={styling}
+            onClick={() => setShowSignupForm(true)}
+          />
         </div>
       </header>
     </Fragment>

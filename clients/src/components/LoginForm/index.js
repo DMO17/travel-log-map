@@ -6,7 +6,7 @@ import "./style.css";
 import { useAuth } from "../../context/AppProvider";
 import { useState } from "react";
 
-export const LoginForm = ({ setLoginForm }) => {
+export const LoginForm = ({ setShowLoginForm }) => {
   const {
     handleSubmit,
     register,
@@ -28,6 +28,7 @@ export const LoginForm = ({ setLoginForm }) => {
       setUser(data.user);
       setIsLoggedIn(true);
       setLoading(false);
+      setShowLoginForm(false);
     }
   };
 
@@ -61,7 +62,7 @@ export const LoginForm = ({ setLoginForm }) => {
       <span
         style={{ cursor: "pointer" }}
         className="failure"
-        onClick={() => setLoginForm(false)}
+        onClick={() => setShowLoginForm(false)}
       >
         <u>Cancel</u>
       </span>
