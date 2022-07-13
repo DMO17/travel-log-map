@@ -59,9 +59,13 @@ const login = async (req, res) => {
         .json({ success: false, error: "Failed to login " });
     }
 
+    const accessToken = signToken(loginUser);
+
+    req.headers = { token: `Bearer ${accessToken}` };
+
     return res.json({
       success: true,
-      token: signToken(loginUser),
+      token: accessToken,
       user: {
         id: loginUser._id,
         username: loginUser.username,

@@ -3,6 +3,10 @@ import { createContext, useContext, useState } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+  const [accessToken, setAccessToken] = useState(
+    localStorage.getItem("token") || false
+  );
+
   const [isLoggedIn, setIsLoggedIn] = useState(
     !!localStorage.getItem("token") || false
   );
@@ -16,6 +20,8 @@ export const AppProvider = ({ children }) => {
         user,
         setIsLoggedIn,
         setUser,
+        accessToken,
+        setAccessToken,
       }}
     >
       {children}

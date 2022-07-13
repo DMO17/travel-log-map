@@ -9,7 +9,7 @@ const signToken = ({ email, _id, username }) => {
 };
 
 const authMiddleware = (req, res, next) => {
-  let token = req.headers.token;
+  let token = req.headers.authorization;
 
   if (!token) {
     console.log("[ERROR]: Invalid Token");

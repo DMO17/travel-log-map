@@ -53,11 +53,7 @@ export const SignUpForm = ({ setShowSignupForm }) => {
           {...register("username", { required: true })}
         />
 
-        <input
-          autoFocus
-          placeholder="email"
-          {...register("email", { required: true })}
-        />
+        <input placeholder="email" {...register("email", { required: true })} />
 
         <input
           type="password"

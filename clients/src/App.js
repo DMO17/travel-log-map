@@ -11,12 +11,13 @@ import { Header } from "./components/Header";
 import { LoginForm } from "./components/LoginForm";
 import { AppProvider } from "./context/AppProvider";
 import { SignUpForm } from "./components/SignUpForm";
+import { Profile } from "./components/Profile";
 
 function App() {
   const viewPortObj = {
     latitude: 42,
     longitude: 17,
-    zoom: 4,
+    zoom: 2,
   };
 
   const [pins, setPins] = useState([]);
@@ -26,6 +27,7 @@ function App() {
   const [refetch, setRefetch] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSignupForm, setShowSignupForm] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
 
   useEffect(() => {
     const pinData = async () => {
@@ -60,6 +62,7 @@ function App() {
       <Header
         setShowLoginForm={setShowLoginForm}
         setShowSignupForm={setShowSignupForm}
+        setShowProfileModal={setShowProfileModal}
       />
       <Map
         style={{ width: "100vw", height: "100vh" }}
@@ -86,6 +89,10 @@ function App() {
       {showLoginForm && <LoginForm setShowLoginForm={setShowLoginForm} />}
 
       {showSignupForm && <SignUpForm setShowSignupForm={setShowSignupForm} />}
+
+      {showProfileModal && (
+        <Profile setShowProfileModal={setShowProfileModal} />
+      )}
     </AppProvider>
   );
 }
