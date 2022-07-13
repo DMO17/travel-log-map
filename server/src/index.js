@@ -19,7 +19,8 @@ const init = async () => {
   );
 
   await mongoose.connect(
-    `mongodb+srv://${process.env.SECURITY_INFO}@cluster-tlm.gtbdvkl.mongodb.net/?retryWrites=true&w=majority`,
+    process.env.MONGODB_URI ||
+      `mongodb+srv://${process.env.SECURITY_INFO}@cluster-tlm.gtbdvkl.mongodb.net/?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
