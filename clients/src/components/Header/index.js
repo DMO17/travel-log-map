@@ -14,7 +14,7 @@ export const Header = ({
 }) => {
   const { user, setIsLoggedIn, setUser } = useAuth();
 
-  const styling = { fontSize: 50, marginRight: "25px", cursor: "pointer" };
+  const styling = { fontSize: 45, marginLeft: "25px", cursor: "pointer" };
 
   return (
     <Fragment>

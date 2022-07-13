@@ -91,7 +91,7 @@ function App() {
       {showSignupForm && <SignUpForm setShowSignupForm={setShowSignupForm} />}
 
       {showProfileModal && (
-        <Profile setShowProfileModal={setShowProfileModal} />
+        <Profile setShowProfileModal={setShowProfileModal} pins={pins} />
       )}
     </AppProvider>
   );

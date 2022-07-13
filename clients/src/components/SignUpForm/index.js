@@ -16,8 +16,6 @@ export const SignUpForm = ({ setShowSignupForm }) => {
   const [loading, setLoading] = useState(false);
   const [signupError, setSignupError] = useState(false);
 
-  console.log(signupError);
-
   const onSubmit = async ({ password, confirmPassword, email, username }) => {
     if (password !== confirmPassword) {
       setError("confirmPassword", {

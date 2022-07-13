@@ -6,8 +6,12 @@ import { useAuth } from "../../context/AppProvider";
 
 import "./style.css";
 
-export const Profile = ({ setShowProfileModal }) => {
+export const Profile = ({ setShowProfileModal, pins }) => {
   const { user } = useAuth();
+
+  const numberOfPins = pins?.filter(
+    (pin) => pin.username === user.username
+  ).length;
 
   const styling = { fontSize: 50, cursor: "pointer" };
   return (
@@ -24,7 +28,7 @@ export const Profile = ({ setShowProfileModal }) => {
           <AiOutlineMail style={styling} /> : {user?.email}
         </div>
         <div>
-          <GoLocation style={styling} /> : 10
+          <GoLocation style={styling} /> : {numberOfPins}
         </div>
       </div>
 
