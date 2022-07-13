@@ -18,10 +18,13 @@ const init = async () => {
     console.log(`Server Running on http://localhost:${PORT}`)
   );
 
-  await mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(
+    `mongodb+srv://${process.env.SECURITY_INFO}@cluster-tlm.gtbdvkl.mongodb.net/?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );
 
   console.log("[INFO] : Successfully connected to db");
 
