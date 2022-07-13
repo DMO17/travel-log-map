@@ -19,8 +19,7 @@ const init = async () => {
   );
 
   await mongoose.connect(
-    process.env.MONGODB_URI ||
-      `mongodb+srv://${process.env.SECURITY_INFO}@cluster-tlm.gtbdvkl.mongodb.net/?retryWrites=true&w=majority`,
+    process.env.MONGODB_URL || "mongodb://localhost:27017/tarvelLogMap",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
