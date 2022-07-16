@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(cors({ origin: "https://travel-log-map-api.herokuapp.com/" }));
+app.use(cors({ origin: "https://travel-log-map-api.herokuapp.com" }));
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
