@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const routes = require("./routes");
 
@@ -8,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.use(cors({ origin: "https://travel-log-map-api.herokuapp.com/" }));
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
