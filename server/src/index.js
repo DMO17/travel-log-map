@@ -20,13 +20,10 @@ const init = async () => {
     console.log(`Server Running on http://localhost:${PORT}`)
   );
 
-  await mongoose.connect(
-    process.env.MONGODB_URL || "mongodb://localhost:27017/tarvelLogMap",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  );
+  await mongoose.connect(process.env.MONGODB_URL || process.env.MONGODBURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 
   console.log("[INFO] : Successfully connected to db");
 

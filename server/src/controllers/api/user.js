@@ -44,9 +44,7 @@ const login = async (req, res) => {
     if (!loginUser) {
       console.log(`[ERROR]:  Failed to login | Incorrect username `);
 
-      return res
-        .status(400)
-        .json({ success: false, error: "Failed to login " });
+      return res.json({ success: false, error: "Failed to login " });
     }
 
     const validPassword = await bcrypt.compare(password, loginUser.password);
@@ -54,9 +52,7 @@ const login = async (req, res) => {
     if (!validPassword) {
       console.log(`[ERROR]:  Failed to login | Incorrect password `);
 
-      return res
-        .status(400)
-        .json({ success: false, error: "Failed to login " });
+      return res.json({ success: false, error: "Failed to login " });
     }
 
     const accessToken = signToken(loginUser);
