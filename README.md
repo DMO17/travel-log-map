@@ -1,4 +1,10 @@
-# travel-log-map
+# TRAVEL LOG MAP 
 
-## Deployed Link
-https://62d2ae7d77520e000849d6b5--neon-hotteok-86fa70.netlify.app/
+## DEPLOYMENT 
+
+### CLINET : https://neon-hotteok-86fa70.netlify.app/
+### SERVER : https://travel-log-map-api.herokuapp.com/
+
+## GITHUB 
+### CLIENT: https://github.com/DMO17/travel-log-map-client
+### SERVER: https://github.com/DMO17/travel-log-map
